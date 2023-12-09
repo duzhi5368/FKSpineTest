@@ -22,4 +22,19 @@
 - 5，创建游戏对象->Spine->SkeletonAnimation
   - 拖拽生成的Skeleton data文件到SkeletonAnimation脚本的SkeletonData asset中
   - 拖拽生成的Material文件到Gameobj上，添加 Meterial 属性
+- 6，测试
+  - 可通过调整Initial Skin调整皮肤
+  - 可通过调整Animatiion name，loop, time scale 调整动作，循环和速度。
+
+### 脚本常用函数
+
+- 对象
+  - SkeletonAnimation skeletonAnimation
+    - Spine.AnimationState animationState = skeletonAnimation.AnimationState;
+      - 播放动画：animationState.SetAnimation(0, animation.Name, bIsLoop);
+      - 多对象动画(骑马)：animationState.SetAnimation(trackIndex, animation.Name, bIsLoop);
+    - Skeleton skeleton = skeletonAnimation.Skeleton;
+      - SkeletonData skeletonData = skeleton.Data;
+        - ExposedList<Spine.Animation> animations = skeletonData.Animations;
+          - 动画列表< 动画名：动画制作时间 >
 - 
