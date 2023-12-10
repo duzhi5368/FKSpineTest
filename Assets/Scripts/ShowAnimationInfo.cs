@@ -51,10 +51,6 @@ public class ShowAnimationInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (textComponent != null)
-        {
-            textComponent.text = "µ±Ç°¶¯»­: " + Time.time.ToString("F2");
-        }
         if (animationState != null && animationState.Tracks.Count > 0)
         {
             TrackEntry track = animationState.GetCurrent(0);

@@ -31,10 +31,52 @@
 - 对象
   - SkeletonAnimation skeletonAnimation
     - Spine.AnimationState animationState = skeletonAnimation.AnimationState;
-      - 播放动画：animationState.SetAnimation(0, animation.Name, bIsLoop);
-      - 多对象动画(骑马)：animationState.SetAnimation(trackIndex, animation.Name, bIsLoop);
     - Skeleton skeleton = skeletonAnimation.Skeleton;
       - SkeletonData skeletonData = skeleton.Data;
+        - Spine.EventData eventData = skeletonData.FindEvent(eventName);
         - ExposedList<Spine.Animation> animations = skeletonData.Animations;
-          - 动画列表< 动画名：动画制作时间 >
-- 
+  - SkeletonAnimation
+
+- 获取动画信息：动画列表< 动画名：动画制作时间 >
+```C#
+  ExposedList<Spine.Animation> animations = skeletonData.Animations;
+```
+
+- 播放动画
+```C#
+  animationState.SetAnimation(0, animation.Name, bIsLoop);
+```
+
+- 多对象动画（例如骑马-自身一套，马一套）
+```C#
+  animationState.SetAnimation(trackIndex, animation.Name, bIsLoop);
+```
+
+- 事件处理
+```C#
+  Spine.EventData eventData = skeletonAnimation.Skeleton.Data.FindEvent(eventName);
+  skeletonAnimation.AnimationState.Event += HandleAnimationStateEvent;
+  void HandleAnimationStateEvent(TrackEntry trackEntry, Spine.Event e) { 
+    if(eventData == e.Data){ 
+      doSth();
+    } 
+  }
+```
+
+- 动作混合
+```C#
+        animationState.SetAnimation(0, firstAnimationName, true);
+        // 添加第二个动画到混合队列（用于混合两个动画）
+        TrackEntry secondAnimation = animationState.SetAnimation(1, secondAnimationName, true);
+        secondAnimation.mixDuration = 0.5f; // 设置混合时间
+        secondAnimation.mixBlend = MixBlend.Additive; // 混合模式
+```
+
+- 动画UI操作
+```C#
+        skeletonGraphic.AnimationState.SetAnimation(0, "yourAnimationName", true);
+        // 设置动画速度
+        skeletonGraphic.timeScale = 1.5f;
+        // 添加事件监听器
+        skeletonGraphic.AnimationState.Event += HandleEvent;
+```
