@@ -31,4 +31,4 @@ MonoBehaviour:
   duration:
   - 0
   defaultMix: 0.1
-  controller: {fileID: 0}
+  controller: {fileID: 9100000, guid: 0e7aaff5625682f47ad4a1029db9e965, type: 2}
