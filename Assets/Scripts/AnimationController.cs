@@ -86,7 +86,6 @@ public class AnimationController : MonoBehaviour
         bool bIsShouldDoJump = false;
         bool bIsShouldDoJumpInterrupt = false;
         bool bIsHardLand = false;
-        bool bIsShouldChangeToAttack = false;
 
         if (isLanded)
         {

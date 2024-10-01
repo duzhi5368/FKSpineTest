@@ -54,7 +54,6 @@ public class SkeletonAnimationHandle : MonoBehaviour
     {
         if (horizontal != 0)
         {
-            skeletonAnimation.initialFlipX
             skeletonAnimation.Skeleton.ScaleX = horizontal > 0 ? 1f : -1f;
         }
     }
